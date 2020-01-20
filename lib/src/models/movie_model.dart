@@ -17,6 +17,7 @@ class Movies{
 }
 
 class Movie {
+  String uniqueId;
   double popularity;
   double voteCount;
   bool video;
@@ -50,7 +51,7 @@ class Movie {
   });
 
   Movie.fromJsonMap(Map<String,dynamic> json){
-    popularity = json['popularity'];
+    popularity = json['popularity']/1;
     voteCount = json['vote_count'].toDouble();
     video = json['video'];
     posterPath = json['poster_path'];
@@ -67,13 +68,19 @@ class Movie {
   }
 
   getPosterImg(){
-
     if(posterPath==null){
       return 'https://es.zenit.org/wp-content/uploads/2018/05/no-image-icon.png';
     }else{
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     }
-    
+  }
+
+  getBackgroundImg(){
+    if(backdropPath==null){
+      return 'https://es.zenit.org/wp-content/uploads/2018/05/no-image-icon.png';
+    }else{
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+    }
   }
 
 }
